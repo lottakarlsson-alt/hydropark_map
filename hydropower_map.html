@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Hydropower Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<style>
+body{margin:0;}
+#map{height:100vh;}
+.legend{background:white;padding:10px;font-size:14px;}
+.summary{background:white;padding:10px;font-size:14px;}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+
+var map = L.map('map').setView([63.8,16.8],7);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18}).addTo(map);
+
+/* Color per Owner */
+function ownerColor(owner){
+    if(owner=="Vattenfall") return "blue";
+    if(owner=="Uniper") return "red";
+    if(owner=="Fortum") return "orange";
+    if(owner=="Statkraft") return "green";
+    if(owner=="Sollefteåforsen") return "purple";
+    return "black";
+}
+
+/* Draw rivers */
+function drawRiver(coords, name, color){
+    var river = L.polyline(coords,{color:color,weight:4}).addTo(map);
+    river.bindPopup(name);
+}
+
+/* -------------------------------------------------- */
+/* ÅNGERMANÄLVEN — oförändrad */
+/* -------------------------------------------------- */
+drawRiver([
+    [64.2861,17.2427],
+    [64.1021,17.2888],
+    [63.8829,17.1901],
+    [63.6862,17.0111],
+    [63.6339,16.2917],
+    [63.4831,16.5936],
+    [63.5385,16.7645],
+    [63.4469,16.8915],
+    [63.3683,16.9883],
+    [63.3645,16.8575],
+    [63.1670,17.2688]
+], "Ångermanälven", "blue");
+
+/* -------------------------------------------------- */
+/* FAXÄLVEN — oförändrad */
+/* -------------------------------------------------- */
+drawRiver([
+    [63.5985,16.1218],
+    [63.5310,16.4749],
+    [63.1837,17.0968]
+], "Faxälven", "cyan");
+
+/* -------------------------------------------------- */
+/* INDALSÄLVEN — NU KORREKT SAMMANHÄNGANDE            */
+/* -------------------------------------------------- */
+drawRiver([
+    [63.1718,15.9995],   // Stugun
+    [63.1489,16.0712],   // Krångede
+    [63.2598,16.0585],   // Midskog
+    [63.2165,16.1050],   // Näverede
+    [63.1419,16.1611],   // Gammelänge
+    [63.1225,16.3172],   // Stadsforsen
+    [63.0944,16.3618],   // Svarthålsforsen
+    [63.0261,16.4832],   // Hammarforsen (flyttad upp)
+    [62.9508,16.6678]    // Hölleforsen (nedströms)
+], "Indalsälven", "green");
+
+/* -------------------------------------------------- */
+/* HYDROPOWER PLANTS — oförändrade */
+/* -------------------------------------------------- */
+
+var plants = [
+["Åsele","Vattenfall","Ångermanälven",64.1021,17.2888,26,116,26,"Åsele kommun"],
+["Edensforsen","Uniper","Ångermanälven",63.6862,17.0111,80,357,80,"Sollefteå kommun"],
+["Forsmo","Vattenfall","Ångermanälven",63.3645,16.8575,152,730,152,"Sollefteå kommun"],
+["Gammelänge","Fortum","Indalsälven",63.1419,16.1611,78,496,78,"Ragunda kommun"],
+["Hällby","Uniper","Ångermanälven",63.8829,17.1901,84,339,84,"Sollefteå kommun"],
+["Hammarforsen","Statkraft","Indalsälven",63.0261,16.4832,79,553,79,"Ragunda kommun"],
+["Hjälta","Uniper","Faxälven",63.1837,17.0968,178,1005,178,"Sollefteå kommun"],
+["Högforsen","Högforsen Kraftverk AB","Gillerån",63.2471,16.5982,0.32,1.7,0.32,"Ragunda kommun"],
+["Hölleforsen","Vattenfall","Indalsälven",62.9508,16.6678,149,734,149,"Ragunda kommun"],
+["Kilforsen","Vattenfall","Ångermanälven",63.5385,16.7645,272,1866,272,"Sollefteå kommun"],
+["Krångede","Fortum","Indalsälven",63.1489,16.0712,248,1622,248,"Ragunda kommun"],
+["Långbjörn","Vattenfall","Ångermanälven",63.6339,16.2917,99,418,99,"Sollefteå kommun"],
+["Lasele","Vattenfall","Ångermanälven",63.4831,16.5936,155,671,155,"Sollefteå kommun"],
+["Midskog","Vattenfall","Indalsälven",63.2598,16.0585,158,734,158,"Ragunda kommun"],
+["Moforsen","Uniper","Ångermanälven",63.3683,16.9883,160,659,160,"Sollefteå kommun"],
+["Nämforsen","Vattenfall","Ångermanälven",63.4469,16.8915,105,755,105,"Sollefteå kommun"],
+["Näverede","Vattenfall","Indalsälven",63.2165,16.1050,76,349,76,"Ragunda kommun"],
+["Ramsele","Uniper","Faxälven",63.5310,16.4749,171,899,171,"Sollefteå kommun"],
+["Sollefteå","Sollefteåforsen","Ångermanälven",63.1670,17.2688,62,298,62,"Sollefteå kommun"],
+["Stadsforsen","Vattenfall","Indalsälven",63.1225,16.3172,148,841,148,"Ragunda kommun"],
+["Stalon","Vattenfall","Vojmån",64.1525,16.8316,130,548,130,"Vilhelmina kommun"],
+["Stenkullafors","Vattenfall","Ångermanälven",64.2861,17.2427,57,234,57,"Åsele kommun"],
+["Storfinnforsen","Uniper","Faxälven",63.5985,16.1218,112,543,112,"Sollefteå kommun"],
+["Stugun","Vattenfall","Indalsälven",63.1718,15.9995,46,181,46,"Ragunda kommun"],
+["Svarthålsforsen","Fortum","Indalsälven",63.0944,16.3618,86,444,86,"Ragunda kommun"]
+];
+
+/* Add markers and popup */
+var riverSum = {};
+plants.forEach(function(r){
+    var marker = L.circleMarker([r[3],r[4]],{radius:8,color:ownerColor(r[1]),fillOpacity:0.9}).addTo(map);
+    var popup = "<b>"+r[0]+"</b><br>"+
+                "Ägare: "+r[1]+"<br>"+
+                "Älv: "+r[2]+"<br>"+
+                "Kommun: "+r[8]+"<br>"+
+                "Kapacitet: "+r[5]+" MW<br>"+
+                "Årsproduktion: "+r[6]+" GWh<br>"+
+                "Max per timme: "+r[7]+" MWh/h";
+    marker.bindPopup(popup);
+
+    if(!riverSum[r[2]]) riverSum[r[2]]={mw:0,gwh:0};
+    riverSum[r[2]].mw += Number(r[5]);
+    riverSum[r[2]].gwh += Number(r[6]);
+});
+
+/* display summary */
+var summary = L.control({position:"topright"});
+summary.onAdd = function(){
+    var div = L.DomUtil.create("div","summary");
+    div.innerHTML="<b>Summering per älv</b><br>";
+    for(var river in riverSum){
+        div.innerHTML+=river+": "+riverSum[river].mw+" MW / "+riverSum[river].gwh+" GWh<br>";
+    }
+    return div;
+};
+summary.addTo(map);
+
+/* legend */
+var legend = L.control({position:"bottomright"});
+legend.onAdd = function(){
+    var div = L.DomUtil.create("div","legend");
+    div.innerHTML="<b>Ägare</b><br>"+
+                  "<span style='color:blue'>●</span> Vattenfall<br>"+
+                  "<span style='color:red'>●</span> Uniper<br>"+
+                  "<span style='color:orange'>●</span> Fortum<br>"+
+                  "<span style='color:green'>●</span> Statkraft<br>"+
+                  "<span style='color:purple'>●</span> Sollefteåforsen";
+    return div;
+};
+legend.addTo(map);
+
+</script>
+</body>
+</html>
