@@ -1,0 +1,28 @@
+﻿Name,Owner,River,Lat,Lon,Capacity_MW,Annual_GWh,Max_MWh_h,Municipality
+Åsele,Vattenfall,Ångermanälven,64.1021,17.2888,26,116,26,Åsele kommun
+Edensforsen,Uniper,Ångermanälven,63.6862,17.0111,80,357,80,Sollefteå kommun
+Forsmo,Vattenfall,Ångermanälven,63.3645,16.8575,152,730,152,Sollefteå kommun
+Gammelänge,Fortum,Indalsälven,63.1419,16.1611,78,496,78,Ragunda kommun
+Hällby,Uniper,Ångermanälven,63.8829,17.1901,84,339,84,Sollefteå kommun
+Hammarforsen,Statkraft,Indalsälven,63.0261,16.4832,79,553,79,Ragunda kommun
+Hjälta,Uniper,Faxälven,63.1837,17.0968,178,1005,178,Sollefteå kommun
+Högforsen,Högforsen Kraftverk AB,Gillerån,63.2471,16.5982,0.32,1.�r den ok nu?
+7,0.32,Ragunda kommun
+Hölleforsen,Vattenfall,Indalsälven,62.9508,16.6678,149,734,149,Ragunda kommun
+Kilforsen,Vattenfall,Ångermanälven,63.5385,16.7645,272,1866,272,Sollefteå kommun
+Krångede,Fortum,Indalsälven,63.1489,16.0712,248,1622,248,Ragunda kommun
+Långbjörn,Vattenfall,Ångermanälven,63.6339,16.2917,99,418,99,Sollefteå kommun
+Lasele,Vattenfall,Ångermanälven,63.4831,16.5936,155,671,155,Sollefteå kommun
+Midskog,Vattenfall,Indalsälven,63.2598,16.0585,158,734,158,Ragunda kommun
+Moforsen,Uniper,Ångermanälven,63.3683,16.9883,160,659,160,Sollefteå kommun
+Nämforsen,Vattenfall,Ångermanälven,63.4469,16.8915,105,755,105,Sollefteå kommun
+Näverede,Vattenfall,Indalsälven,63.2165,16.1050,76,349,76,Ragunda kommun
+Ramsele,Uniper,Faxälven,63.5310,16.4749,171,899,171,Sollefteå kommun
+Sollefteå,Sollefteåforsen,Ångermanälven,63.1670,17.2688,62,298,62,Sollefteå kommun
+Stadsforsen,Vattenfall,Indalsälven,63.1225,16.3172,148,841,148,Ragunda kommun
+Stalon,Vattenfall,Vojmån,64.1525,16.8316,130,548,130,Vilhelmina kommun
+Stenkullafors,Vattenfall,Ångermanälven,63.2693,17.1026,57,234,57,Åsele kommun
+Storfinnforsen,Uniper,Faxälven,63.5985,16.1218,112,543,112,Sollefteå kommun
+Stugun,Vattenfall,Indalsälven,63.1718,15.9995,46,181,46,Ragunda kommun
+Svarthålsforsen,Fortum,Indalsälven,63.0944,16.3618,86,444,86,Ragunda kommun
+,,,,,,,,
